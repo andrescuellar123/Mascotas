@@ -136,4 +136,79 @@ public void organizeTypePetOwner() {
 }
 
 
+//tipos de busqueda para cada atributo de duenio
+
+public String TradicionalSearchName(String name) {
+	String response = "";
+	for(int i = 0;i<own.size();i++) {
+		if(own.get(i).getName().equals(name) ) {
+			response = own.get(i).getName() + "es el nombre del cliente" ;
+		}
+		else 
+			response = "no se ha encontrado el cliente";
+	}
+	
+	return response;
+}
+
+
+public String TradicionalSearchId(String id) {
+	String response = "";
+	for(int i = 0;i<own.size();i++) {
+		if(own.get(i).getIdentification().equals(id) ) {
+			response = own.get(i).getIdentification() + "es la id  del cliente" ;
+		}
+		else 
+			response = "no se ha encontrado la id cliente";
+	}
+	
+	return response;
+}
+
+public String TradicionalSearchLastName(String lastName) {
+	String response = "";
+	for(int i = 0;i<own.size();i++) {
+		if(own.get(i).getLastName().equals(lastName) ) {
+			response = own.get(i).getLastName() + "es el apellido del cliente" ;
+		}
+		else 
+			response = "no se ha encontrado el apellido del cliente";
+	}
+	
+	return response;
+}
+
+public String TradicionalSearchDateBorn(String dateBorn) {
+	String response = "";
+	for(int i = 0;i<own.size();i++) {
+		if(own.get(i).getDateBorn() == dateBorn) {
+			response = own.get(i).getDateBorn() + "es la fecha de nacimiento del cliente" ;
+		}
+		else 
+			response = "no se ha encontrado la fecha de nacimiento del cliente";
+	}
+	
+	return response;
+}
+
+public String TradicionalSearchTypePet(String typePet) {
+	String response = "";
+	for(int i = 0;i<own.size();i++) {
+		if(own.get(i).getTypePet().equals(typePet) ) {
+			response = own.get(i).getTypePet() + "es la id  del cliente" ;
+		}
+		else 
+			response = "no se ha encontrado el tipo de mascota del  cliente";
+	}
+	
+	return response;
+}
+
+
+
+
+
+
+
+
 }

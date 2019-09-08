@@ -19,7 +19,7 @@ public class Owner {
 	 * @param typePet
 	 */
 	public Owner(String id, String name, String lastName, String dateBorn, String typePet) {
-		super();
+		
 		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
@@ -186,5 +186,77 @@ public class Owner {
 		}
 		
 	}
+	
+	//busqueda tradicional para mascotas
+	
+	public String TradicionalSearchNamePet(String name) {
+		String response = "";
+		for(int i = 0;i<pets.size();i++) {
+			if(pets.get(i).getName().equals(name) ) {
+				response = pets.get(i).getName() + "es el nombre del cliente" ;
+			}
+			else 
+				response = "no se ha encontrado el cliente";
+		}
+		
+		return response;
+	}
+
+
+	public String TradicionalSearchIdPet(String id) {
+		String response = "";
+		for(int i = 0;i<pets.size();i++) {
+			if(pets.get(i).getIdentification().equals(id) ) {
+				response = pets.get(i).getIdentification() + "es la id  del cliente" ;
+			}
+			else 
+				response = "no se ha encontrado la id cliente";
+		}
+		
+		return response;
+	}
+
+	public String TradicionalSearchLastGenre(int genre ) {
+		String response = "";
+		for(int i = 0;i<pets.size();i++) {
+			if(pets.get(i).getGenre()==genre ) {
+				response = pets.get(i).getGenre() + "es el apellido del cliente" ;
+			}
+			else 
+				response = "no se ha encontrado el apellido del cliente";
+		}
+		
+		return response;
+	}
+
+	public String TradicionalSearchDateBornPet(String dateBorn) {
+		String response = "";
+		for(int i = 0;i<pets.size();i++) {
+			if(pets.get(i).getDateBorn() == dateBorn) {
+				response = pets.get(i).getDateBorn() + "es la fecha de nacimiento del cliente" ;
+			}
+			else 
+				response = "no se ha encontrado la fecha de nacimiento del cliente";
+		}
+		
+		return response;
+	}
+
+	public String TradicionalSearchTypePet(String typePet) {
+		String response = "";
+		for(int i = 0;i<pets.size();i++) {
+			if(pets.get(i).getTypePet().equals(typePet) ) {
+				response = pets.get(i).getTypePet() + "es la id  del cliente" ;
+			}
+			else 
+				response = "no se ha encontrado el tipo de mascota del  cliente";
+		}
+		
+		return response;
+	}
+	
+	
+	
+	
 	
 }
