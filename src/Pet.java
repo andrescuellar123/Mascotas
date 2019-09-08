@@ -15,9 +15,9 @@ public class Pet {
 	 * @param genre
 	 * @param typePet
 	 */
-	public Pet(String identification, String name, String dateBorn, int genre, String typePet) {
+	public Pet(String id, String name, String dateBorn, int genre, String typePet) {
 		super();
-		this.id = identification;
+		this.id = id;
 		this.name = name;
 		this.dateBorn = dateBorn;
 		this.genre = genre;
@@ -32,8 +32,8 @@ public class Pet {
 	/**
 	 * @param identification the identification to set
 	 */
-	public void setIdentification(String identification) {
-		this.id = identification;
+	public void setIdentification(String id) {
+		this.id = id;
 	}
 	/**
 	 * @return the name
@@ -91,7 +91,7 @@ public class Pet {
 		return name.compareTo(p.getName());
 	}
 	
-	public int compareIdentityOwner(Pet p) {
+	public int compareIdPet(Pet p) {
 		
 		return id.compareTo(p.getIdentification());
 	}
@@ -111,4 +111,5 @@ public class Pet {
 		return typePet.compareTo(p.getTypePet());
 	}
 	
+
 }

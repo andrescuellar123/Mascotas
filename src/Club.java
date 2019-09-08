@@ -1,9 +1,13 @@
+import java.util.ArrayList;
 
 public class Club {
 private String identification;
 private String name;
 private String dateCrea;
 private String typePet;
+
+//RelationShip
+private ArrayList<Owner> own;
 
 /**
  * @param identification
@@ -67,6 +71,69 @@ public void setTypePet(String typePet) {
 	this.typePet = typePet;
 }
 
+
+public void organizeNameOwner() {
+	for(int i = 0; i < own.size();i++) {
+		for(int j = 0;j<own.size()-1-i;j++) {
+			if(own.get(j).compareNameOwner(own.get(j+1))>0) {
+				Owner tmp = own.get(j);
+				own.set(j, own.get(j+1));
+				own.set(j+1, tmp);
+			}
+		}
+	}
+	
+}
+
+public void organizeIdOwner() {
+	for(int i = 0; i < own.size();i++) {
+		for(int j = 0;j<own.size()-1-i;j++) {
+			if(own.get(j).compareIdentityOwner(own.get(j+1))>0) {
+				Owner tmp = own.get(j);
+				own.set(j, own.get(j+1));
+				own.set(j+1, tmp);
+			}
+		}
+	}
+	
+}
+
+public void organizeLastNameOwner() {
+	for(int i = 0; i < own.size();i++) {
+		for(int j = 0;j<own.size()-1-i;j++) {
+			if(own.get(j).compareLastNameOwner(own.get(j+1))>0) {
+				Owner tmp = own.get(j);
+				own.set(j, own.get(j+1));
+				own.set(j+1, tmp);
+			}
+		}
+	}
+	
+}
+public void organizeDateBornOwner() {
+	for(int i = 0; i < own.size();i++) {
+		for(int j = 0;j<own.size()-1-i;j++) {
+			if(own.get(j).compareDateBornOwner(own.get(j+1))>0) {
+				Owner tmp = own.get(j);
+				own.set(j, own.get(j+1));
+				own.set(j+1, tmp);
+			}
+		}
+	}
+	
+}
+public void organizeTypePetOwner() {
+	for(int i = 0; i < own.size();i++) {
+		for(int j = 0;j<own.size()-1-i;j++) {
+			if(own.get(j).compareTypePetOwner(own.get(j+1))>0) {
+				Owner tmp = own.get(j);
+				own.set(j, own.get(j+1));
+				own.set(j+1, tmp);
+			}
+		}
+	}
+	
+}
 
 
 }

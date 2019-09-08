@@ -18,9 +18,9 @@ public class Owner {
 	 * @param dateBorn
 	 * @param typePet
 	 */
-	public Owner(String identification, String name, String lastName, String dateBorn, String typePet) {
+	public Owner(String id, String name, String lastName, String dateBorn, String typePet) {
 		super();
-		this.id = identification;
+		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
 		this.dateBorn = dateBorn;
@@ -36,8 +36,8 @@ public class Owner {
 	/**
 	 * @param identification the identification to set
 	 */
-	public void setIdentification(String identification) {
-		this.id = identification;
+	public void setIdentification(String id) {
+		this.id = id;
 	}
 	/**
 	 * @return the name
@@ -124,6 +124,67 @@ public class Owner {
 				pets.add(m);
 			}
 		}
+	}
+	
+	public void organizePetName() {
+		for(int i = 0; i < pets.size();i++) {
+			for(int j = 0;j<pets.size()-1-i;j++) {
+				if(pets.get(j).compareNamePet(pets.get(j+1))>0) {
+					Pet tmp = pets.get(j);
+					pets.set(j, pets.get(j+1));
+					pets.set(j+1, tmp);
+				}
+			}
+		}
+		
+	}
+	public void organizePetId() {
+		for(int i = 0; i < pets.size();i++) {
+			for(int j = 0;j<pets.size()-1-i;j++) {
+				if(pets.get(j).compareIdPet(pets.get(j+1))>0) {
+					Pet tmp = pets.get(j);
+					pets.set(j, pets.get(j+1));
+					pets.set(j+1, tmp);
+				}
+			}
+		}
+		
+	}
+	public void organizePetGenre() {
+		for(int i = 0; i < pets.size();i++) {
+			for(int j = 0;j<pets.size()-1-i;j++) {
+				if(pets.get(j).compareGenrePet(pets.get(j+1))>0) {
+					Pet tmp = pets.get(j);
+					pets.set(j, pets.get(j+1));
+					pets.set(j+1, tmp);
+				}
+			}
+		}
+		
+	}
+	public void organizePetBornDate() {
+		for(int i = 0; i < pets.size();i++) {
+			for(int j = 0;j<pets.size()-1-i;j++) {
+				if(pets.get(j).compareDateBornPet(pets.get(j+1))>0) {
+					Pet tmp = pets.get(j);
+					pets.set(j, pets.get(j+1));
+					pets.set(j+1, tmp);
+				}
+			}
+		}
+		
+	}
+	public void organizeTypePetName() {
+		for(int i = 0; i < pets.size();i++) {
+			for(int j = 0;j<pets.size()-1-i;j++) {
+				if(pets.get(j).compareTypePet(pets.get(j+1))>0) {
+					Pet tmp = pets.get(j);
+					pets.set(j, pets.get(j+1));
+					pets.set(j+1, tmp);
+				}
+			}
+		}
+		
 	}
 	
 }
