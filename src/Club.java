@@ -72,6 +72,38 @@ public void setTypePet(String typePet) {
 }
 
 
+public int compareNameClub(Club c) {
+	
+	return name.compareTo(c.getName());
+}
+public int compareIdClub(Club c) {
+	
+	return identification.compareTo(c.getIdentification());
+}
+public int compareDateCreation(Club c) {
+	
+	return dateCrea.compareTo(c.getDateCrea());
+}
+public int compareTypePet(Club c) {
+	
+	return typePet.compareTo(c.getTypePet());
+}
+
+
+//aniadir un cliente
+
+public void addOwner(Owner l){
+	boolean equal = false;
+	for(int i=0; i<own.size() && !equal; i++){
+		if(own.get(i).compareNameOwner(l)==0){
+			//exception sameObject
+		}else{
+			own.add(l);
+		}
+	}
+}
+
+
 public void organizeNameOwner() {
 	for(int i = 0; i < own.size();i++) {
 		for(int j = 0;j<own.size()-1-i;j++) {
@@ -203,6 +235,11 @@ public String TradicionalSearchTypePet(String typePet) {
 	
 	return response;
 }
+
+
+//exeptions
+
+
 
 
 

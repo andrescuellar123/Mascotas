@@ -114,12 +114,13 @@ public class Owner {
 		return typePet.compareTo(o.getTypePet());
 	}
 	
+	//aniadir una mascota
 	
 	public void addPet(Pet m){
 		boolean equal = false;
 		for(int i=0; i<pets.size() && !equal; i++){
 			if(pets.get(i).compareNamePet(m)==0){
-				//exception sameObject
+				//throw new MyException("La mascota tiene el mismo nombre");
 			}else{
 				pets.add(m);
 			}
@@ -255,6 +256,7 @@ public class Owner {
 		return response;
 	}
 	
+	//exeptions
 	
 	
 	
