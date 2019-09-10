@@ -25,6 +25,7 @@ public class Owner {
 		this.lastName = lastName;
 		this.dateBorn = dateBorn;
 		this.typePet = typePet;
+		pets = new ArrayList<>();
 	}
 	
 	/**
@@ -87,6 +88,19 @@ public class Owner {
 	public void setTypePet(String typePet) {
 		this.typePet = typePet;
 	}
+	/**
+	 * @return the pets
+	 */
+	public ArrayList<Pet> getPets() {
+		return pets;
+	}
+
+	/**
+	 * @param pets the pets to set
+	 */
+	public void setPets(ArrayList<Pet> pets) {
+		this.pets = pets;
+	}
 	
 	
 	public int compareNameOwner(Owner o) {
@@ -116,11 +130,11 @@ public class Owner {
 	
 	//aniadir una mascota
 	
-	public void addPet(Pet m){
+	public void addPet(Pet m) throws MyException{
 		boolean equal = false;
 		for(int i=0; i<pets.size() && !equal; i++){
 			if(pets.get(i).compareNamePet(m)==0){
-				//throw new MyException("La mascota tiene el mismo nombre");
+				throw new MyException("La mascota tiene el mismo nombre");
 			}else{
 				pets.add(m);
 			}
@@ -139,18 +153,23 @@ public class Owner {
 		}
 		
 	}
-	public void organizePetId() {
-		for(int i = 0; i < pets.size();i++) {
-			for(int j = 0;j<pets.size()-1-i;j++) {
-				if(pets.get(j).compareIdPet(pets.get(j+1))>0) {
-					Pet tmp = pets.get(j);
-					pets.set(j, pets.get(j+1));
-					pets.set(j+1, tmp);
+	
+	//ordenamiento insercion
+	
+	public void organizeInsertionPetId() {
+		for (int i = 0; i < pets.size()-1; i++) {
+			Pet p = pets.get(i);
+			int l = i;
+			for (int j = i+1; j < pets.size(); j++) {
+				if(p.compareIdPet(pets.get(j))>0) {
+					p=pets.get(j);
+					l=j;
 				}
 			}
 		}
-		
 	}
+	
+	
 	public void organizePetGenre() {
 		for(int i = 0; i < pets.size();i++) {
 			for(int j = 0;j<pets.size()-1-i;j++) {
@@ -191,13 +210,16 @@ public class Owner {
 	//busqueda tradicional para mascotas
 	
 	public String TradicionalSearchNamePet(String name) {
-		String response = "";
+		String response = " No se encontrado el nombre de la mascota";
+		int p = 0;
 		for(int i = 0;i<pets.size();i++) {
 			if(pets.get(i).getName().equals(name) ) {
-				response = pets.get(i).getName() + "es el nombre del cliente" ;
+				response = pets.get(i).getName() + "es el nombre de la mascota" ;
+				p++;
 			}
-			else 
-				response = "no se ha encontrado el cliente";
+			if(p == 1) {
+				response = "Hay una o mas mascotas con el mismo nombre ";
+			}
 		}
 		
 		return response;
@@ -205,60 +227,170 @@ public class Owner {
 
 
 	public String TradicionalSearchIdPet(String id) {
-		String response = "";
+		String response = "No se encontrado la id de la mascota";
+		int p = 0;
 		for(int i = 0;i<pets.size();i++) {
 			if(pets.get(i).getIdentification().equals(id) ) {
-				response = pets.get(i).getIdentification() + "es la id  del cliente" ;
+				response = pets.get(i).getIdentification() + "es la id  de la mascota" ;
+				p++;
 			}
-			else 
-				response = "no se ha encontrado la id cliente";
+			if(p == 1) {
+				response = "Hay una o mas mascotas con el mismo nombre ";
+			}
 		}
 		
 		return response;
 	}
 
 	public String TradicionalSearchLastGenre(int genre ) {
-		String response = "";
+		String response = "No se encontrado el sexo de la mascota";
 		for(int i = 0;i<pets.size();i++) {
 			if(pets.get(i).getGenre()==genre ) {
-				response = pets.get(i).getGenre() + "es el apellido del cliente" ;
+				response = pets.get(i).getGenre() + "el sexo de la mascota" ;
 			}
-			else 
-				response = "no se ha encontrado el apellido del cliente";
 		}
 		
 		return response;
 	}
 
 	public String TradicionalSearchDateBornPet(String dateBorn) {
-		String response = "";
+		String response = "No se encontrado la fecha de nacimiento de la mascota";
 		for(int i = 0;i<pets.size();i++) {
 			if(pets.get(i).getDateBorn() == dateBorn) {
-				response = pets.get(i).getDateBorn() + "es la fecha de nacimiento del cliente" ;
+				response = pets.get(i).getDateBorn() + "es la fecha de nacimiento de la mascota" ;
 			}
-			else 
-				response = "no se ha encontrado la fecha de nacimiento del cliente";
 		}
 		
 		return response;
 	}
 
 	public String TradicionalSearchTypePet(String typePet) {
-		String response = "";
+		String response = "No se encontrado el tipo de la mascota";
 		for(int i = 0;i<pets.size();i++) {
 			if(pets.get(i).getTypePet().equals(typePet) ) {
-				response = pets.get(i).getTypePet() + "es la id  del cliente" ;
+				response = pets.get(i).getTypePet() + "es el tipo de la mascota" ;
 			}
-			else 
-				response = "no se ha encontrado el tipo de mascota del  cliente";
+
 		}
 		
 		return response;
 	}
 	
-	//exeptions
+	//busqueda binaria
+	
+	public boolean BinarySearchNamePet(String nameP) {
+		boolean band = false;
+		int l = 0;
+		int end=pets.size()-1;
+		
+		
+		while(end >= l && !band) {
+			int middle = (end + l)/2;
+			if(pets.get(middle).getName().equals(nameP)) {
+				band = true;
+			}
+			else if(pets.get(middle).getName().compareTo(nameP)>0) {
+				end = middle - 1;
+			}
+			else {
+				l = middle + 1;
+			}
+		}
+		return band;
+	}
+
+	public boolean BinarySearchIdPet(String idP) {
+		boolean band = false;
+		int l = 0;
+		int end=pets.size()-1;
+		
+		
+		while(end >= l && !band) {
+			int middle = (end + l)/2;
+			if(pets.get(middle).getIdentification().equals(idP)) {
+				band = true;
+			}
+			else if(pets.get(middle).getIdentification().compareTo(idP)>0) {
+				end = middle - 1;
+			}
+			else {
+				l = middle + 1;
+			}
+		}
+		return band;
+	}
 	
 	
+	public boolean BinarySearchGenrePet(int genreP) {
+		boolean band = false;
+		int l = 0;
+		int end=pets.size()-1;
+		
+		
+		while(end >= l && !band) {
+			int middle = (end + l)/2;
+			if( genreP == pets.get(middle).getGenre()  ) {
+				band = true;
+			}
+			else if(genreP < pets.get(middle).getGenre()) {
+				end = middle - 1;
+			}
+			else {
+				l = middle + 1;
+			}
+		}
+		return band;
+	}
 	
+	
+	public boolean BinarySearchBornDatePet(String bornDateP) {
+		boolean band = false;
+		int l = 0;
+		int end=pets.size()-1;
+		
+		
+		
+		while(end >= l && !band) {
+			int middle = (end + l)/2;
+			if(pets.get(middle).getDateBorn().equals(bornDateP)) {
+				band = true;
+			}
+			else if(pets.get(middle).getDateBorn().compareTo(bornDateP)>0) {
+				end = middle - 1;
+			}
+			else {
+				l = middle + 1;
+			}
+		
+		}
+		return band;
+	}
+	
+	
+		public boolean BinarySearchTypePet(String TypePetP) {
+			boolean band = false;
+			int l = 0;
+			int end=pets.size()-1;
+			
+			
+			
+			while(end >= l && !band) {
+				int middle = (end + l)/2;
+				if(pets.get(middle).getTypePet().equals(TypePetP)) {
+					band = true;
+				}
+				else if(pets.get(middle).getTypePet().compareTo(TypePetP)>0) {
+					end = middle - 1;
+				}
+				else {
+					l = middle + 1;
+				}
+			
+			}
+			return band;
+		}
+		
+		
+		
 	
 }
