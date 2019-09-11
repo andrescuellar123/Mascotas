@@ -109,7 +109,15 @@ public class Pet {
 	public int compareTypePet(Pet p) {
 		
 		return typePet.compareTo(p.getTypePet());
+		
+	}
+	@Override
+	public String toString() {
+		return "Pet [id=" + id + ", name=" + name + ", dateBorn=" + dateBorn + ", genre=" + genre + ", typePet="
+				+ typePet + "]";
 	}
 	
 
+	
+	
 }

@@ -1,6 +1,11 @@
+import java.io.Serializable;
+
 import java.util.ArrayList;
 
-public class Owner {
+import java.util.Comparator;
+
+
+public class Owner implements Serializable, Comparable<Owner>, Comparator<Owner> {
 	private String id;
 	private String name;
 	private String lastName;
@@ -102,6 +107,18 @@ public class Owner {
 		this.pets = pets;
 	}
 	
+	@Override
+	public int compare(Owner o, Owner o1) {
+		
+		return 0;
+	}
+
+	@Override
+	public int compareTo(Owner arg0) {
+		return pets.size()-arg0.getPets().size();
+	}
+	
+	
 	
 	public int compareNameOwner(Owner o) {
 		
@@ -128,7 +145,7 @@ public class Owner {
 		return typePet.compareTo(o.getTypePet());
 	}
 	
-	//aniadir una mascota
+	//aniadir  y borrar  una mascota
 	
 	public void addPet(Pet m) throws MyException{
 		boolean equal = false;
@@ -137,6 +154,14 @@ public class Owner {
 				throw new MyException("La mascota tiene el mismo nombre");
 			}else{
 				pets.add(m);
+			}
+		}
+	}
+	
+	public void RemoveOwners(Pet m) {
+		for (int i = 0; i < pets.size(); i++) {
+			if(pets.get(i).getName().equals(m.getName()) && pets.get(i).getIdentification().equals(m.getIdentification())) {
+				pets.remove(i);
 			}
 		}
 	}
@@ -389,7 +414,16 @@ public class Owner {
 			}
 			return band;
 		}
+
+		@Override
+		public String toString() {
+			return "Owner [id=" + id + ", name=" + name + ", lastName=" + lastName + ", dateBorn=" + dateBorn
+					+ ", typePet=" + typePet + ", pets=" + pets + "]";
+		}
+
 		
+		
+
 		
 		
 	

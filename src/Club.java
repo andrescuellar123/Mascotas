@@ -109,7 +109,7 @@ public int compareTypePet(Club c) {
 }
 
 
-//aniadir un cliente
+//aniadir  y borrar  un cliente
 
 public void addOwner(Owner o) throws MyException{
 	boolean already = false;
@@ -124,6 +124,14 @@ public void addOwner(Owner o) throws MyException{
 			throw new MyException("Este cliente ya esta registrado");
 		}
 	}
+
+public void RemoveOwners(Owner o) {
+	for (int i = 0; i < own.size(); i++) {
+		if(own.get(i).getName().equals(o.getName()) && own.get(i).getIdentification().equals(o.getIdentification())) {
+			own.remove(i);
+		}
+	}
+}
 	
 
 
@@ -375,6 +383,14 @@ public boolean BinarySearchTypePetOwner(String TypePetO) {
 		}
 	}
 	return band;
+}
+
+
+
+@Override
+public String toString() {
+	return "Club [identification=" + identification + ", name=" + name + ", dateCrea=" + dateCrea + ", typePet="
+			+ typePet + ", own=" + own + "]";
 }
 
 

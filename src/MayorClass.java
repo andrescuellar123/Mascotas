@@ -26,8 +26,20 @@ public MayorClass(ArrayList<Club> club) {
 		}
 		
 	}
+	
+	//aniadir  y borrar  un club
+	
+	
 	public void addClub(Club c) {
 		club.add(c);
+	}
+	
+	public void RemoveOwners(Club c) {
+		for (int i = 0; i < club.size(); i++) {
+			if(club.get(i).getName().equals(c.getName()) && club.get(i).getIdentification().equals(c.getIdentification())) {
+				club.remove(i);
+			}
+		}
 	}
 	// l
 	
@@ -228,6 +240,15 @@ public MayorClass(ArrayList<Club> club) {
 		}
 		return band;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "MayorClass [club=" + club + "]";
+	}
+	
+	
 
 
 }
