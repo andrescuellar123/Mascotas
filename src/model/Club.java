@@ -494,6 +494,154 @@ public String toString() {
 }
 
 
+
+
+//pets responasbities
+
+public void OrganizeName() {
+	for (int i = 0; i < own.size(); i++) {
+		own.get(i).organizePetName();;
+	}
+}
+
+public void OrganizeTypePet() {
+	for (int i = 0; i < own.size(); i++) {
+		own.get(i).organizeTypePetName();
+	}
+}
+public void OrganizeGender() {
+	for (int i = 0; i < own.size(); i++) {
+		own.get(i).organizePetGenre();;
+	}
+}
+public void OrganizeId() {
+	for (int i = 0; i < own.size(); i++) {
+		own.get(i).organizeInsertionPetId();;
+	}
+}
+public void OrganizeBornDate() {
+	for (int i = 0; i < own.size(); i++) {
+		own.get(i).organizePetBornDate();
+	}
+}
+
+
+
+public String TradicionalSearchNamePet(String name) {
+	String response = " No se encontrado el nombre de la mascota";
+	int p = 0;
+	for(int i = 0;i<own.size();i++) {
+		if(own.get(i).TradicionalSearchNamePet(name).equals(name) ) {
+			response = own.get(i).getName() + "es el nombre de la mascota" ;
+			p++;
+		}
+		if(p == 1) {
+			response = "Hay una o mas mascotas con el mismo nombre ";
+		}
+	}
+
+	return response;
+
+}
+
+
+public String TradicionalSearchIdPet(String id) {
+	String response = " No se encontrado el nombre de la mascota";
+	int p = 0;
+	for(int i = 0;i<own.size();i++) {
+		if(own.get(i).TradicionalSearchIdPet(id).equals(id) ) {
+			response = own.get(i).getIdentification() + "es el id de la mascota" ;
+			p++;
+		}
+		if(p == 1) {
+			response = "Hay una o mas mascotas con el mismo id ";
+		}
+	}
+
+	return response;
+
+}
+
+public String TradicionalSearchDateBornPet(String dateBorn) {
+	String response = " No se encontrado el fecha de nacimiento de la mascota";
+	
+	for(int i = 0;i<own.size();i++) {
+		if(own.get(i).TradicionalSearchDateBornPet(dateBorn).equals(dateBorn) ) {
+			response = own.get(i).getDateBorn() + "es el fecha de nacimiento de la mascota" ;
+		
+		}
+
+	}
+
+	return response;
+
+}
+
+public String TradicionalSearchTypePetPet(String TypePet) {
+	String response = " No se encontrado el nombre de la mascota";
+	
+	for(int i = 0;i<own.size();i++) {
+		if(own.get(i).TradicionalSearchDateBornPet(TypePet).equals(TypePet) ) {
+			response = own.get(i).getTypePet() + "es el tipo de la mascota" ;
+		
+		}
+
+	}
+
+	return response;
+	
+
+}
+
+
+
+	public boolean binarySearchNamePet(String name) {
+		boolean band =false;
+		for(int i = 0;i<own.size() && band == true ; i++) {
+			if(own.get(i).BinarySearchNamePet(name)) {
+				band=true;
+			}
+		}
+		return band;
+	}
+
+	
+	public boolean binarySearchIdPet(String id) {
+		boolean band =false;
+		for(int i = 0;i<own.size() && band == true ; i++) {
+			if( own.get(i).BinarySearchNamePet(id)) {
+				band = true;
+			}
+		}
+		return band;
+	}
+	
+	
+
+	public boolean binarySearchBornDatePet(String bornDate) {
+		boolean band =false;
+		for(int i = 0;i<own.size() && band == true ; i++) {
+			if(own.get(i).BinarySearchBornDatePet(bornDate)) {
+				band = true;
+			}
+		}
+		return band;
+	}
+
+	
+	public boolean binarySearchTypePet(String TypePet) {
+		boolean band =false;
+		for(int i = 0;i<own.size() && band == true ; i++) {
+			if( own.get(i).BinarySearchBornDatePet(TypePet)) {
+				band = true;
+			}
+		}
+		return band;
+	}
+
+
+
+
 }
 
 

@@ -32,36 +32,7 @@ public void setClub(ArrayList<Club> club) {
 }
 
 
-/**
- * @return the pets
- */
-public ArrayList<Pet> getPets() {
-	return pets;
-}
 
-
-/**
- * @param pets the pets to set
- */
-public void setPets(ArrayList<Pet> pets) {
-	this.pets = pets;
-}
-
-
-/**
- * @return the own
- */
-public ArrayList<Owner> getOwn() {
-	return own;
-}
-
-
-/**
- * @param own the own to set
- */
-public void setOwn(ArrayList<Owner> own) {
-	this.own = own;
-}
 
 /**
 * Description este metodo aniade un club
@@ -197,7 +168,7 @@ public void setOwn(ArrayList<Owner> own) {
 	* @return String 
 	*/
 	
-	public String TradicionalSearchNameClub(String name) {
+	public String TradicionalSearchNameOwner(String name) {
 		String response = "No se encontrado el nombre del club";
 		for(int i = 0;i<club.size();i++) {
 			if(club.get(i).getName().equals(name) ) {
@@ -213,7 +184,7 @@ public void setOwn(ArrayList<Owner> own) {
 	* @return String 
 	*/
 	
-	public String TradicionalSearchIdClub(String id) {
+	public String TradicionalSearchOwner(String id) {
 		String response = "No se encontrado la identificacion del club";
 		for(int i = 0;i<club.size();i++) {
 			if(club.get(i).getIdentification().equals(id) ) {
@@ -369,18 +340,269 @@ public void setOwn(ArrayList<Owner> own) {
 		return "MayorClass [club=" + club + "]";
 	}
 	
-
-	
-	
 	
 
 	
+	//responsabities club
+	
 
-    
+	
 
+public String TradicionalSearchNamePet(String name) {
+	String response = " no se encontro la mascota";
+	int p = 0;
+	boolean encontro = false;
+	for(int i = 0;i<club.size() && encontro == true ;i++) {
+		if(club.get(i).TradicionalSearchNamePet(name).equals(name) ) {
+			encontro = true;
+			response = "se encontro ";
+			p++;
+		}
+		else if(p == 1) {
+			response = "Hay una o mas mascotas con el mismo nombre ";
+		}
+		
+	}
+
+	return response;
+
+}
+
+
+public String TradicionalSearchIdPet(String id) {
+	String response = " no se encontro la mascota";
+	int p = 0;
+	boolean encontro = false;
+	for(int i = 0;i<club.size() && encontro == true ;i++) {
+		if(club.get(i).TradicionalSearchIdPet(id).equals(id) ) {
+			encontro = true;
+			response = "se encontro ";
+			p++;
+		}
+		else if(p == 1) {
+			response = "Hay una o mas mascotas con el mismo id ";
+		}
+		
+	}
+
+	return response;
+
+}
+
+public String TradicionalSearchBornPet(String BornPet) {
+	String response = " no se encontro la mascota";
+	int p = 0;
+	boolean encontro = false;
+	for(int i = 0;i<club.size() && encontro == true ;i++) {
+		if(club.get(i).TradicionalSearchIdPet(BornPet).equals(BornPet) ) {
+			encontro = true;
+			response = "se encontro ";
+			p++;
+		}
+		else if(p == 1) {
+			response = "Hay una o mas mascotas con el mismo fecha de naciemiento ";
+		}
+		
+	}
+
+	return response;
+
+}
+
+public String TradicionalSearchTypePetPet(String TypePet) {
+	String response = " No se encontrado el nombre de la mascota";
+	
+	for(int i = 0;i<club.size();i++) {
+		if(club.get(i).TradicionalSearchDateBornPet(TypePet).equals(TypePet) ) {
+			response = club.get(i).getTypePet() + "es el tipo de la mascota" ;
+		
+		}
+
+	}
+
+	return response;
+	
+
+}
+
+
+
+	public boolean binarySearchNamePet(String name) {
+		boolean band =false;
+		for(int i = 0;i<club.size() && band == true ; i++) {
+			if(club.get(i).binarySearchNamePet(name)) {
+				band=true;
+			}
+		}
+		return band;
+	}
+
+	
+	public boolean binarySearchIdPet(String id) {
+		boolean band =false;
+		for(int i = 0;i<club.size() && band == true ; i++) {
+			if( club.get(i).binarySearchNamePet(id)) {
+				band = true;
+			}
+		}
+		return band;
+	}
+	
+	
+
+	public boolean binSearchBornDatePet(String bornDate) {
+		boolean band =false;
+		for(int i = 0;i<club.size() && band == true ; i++) {
+			if(club.get(i).binarySearchBornDatePet(bornDate)) {
+				band = true;
+			}
+		}
+		return band;
+	}
+
+	
+	public boolean binSearchTypePet(String TypePet) {
+		boolean band =false;
+		for(int i = 0;i<club.size() && band == true ; i++) {
+			if( club.get(i).binarySearchTypePet(TypePet)) {
+				band = true;
+			}
+		}
+		return band;
+	}
+	
+	
+	//responsabilities Owner
+
+	public String TradicionalSearchNameClub(String name) {
+		String response = " No se encontrado el nombre de la mascota";
+		int p = 0;
+		for(int i = 0;i<club.size();i++) {
+			if(club.get(i).TradicionalSearchNamePet(name).equals(name) ) {
+				response = club.get(i).getName() + "es el nombre de la mascota" ;
+				p++;
+			}
+			if(p == 1) {
+				response = "Hay una o mas mascotas con el mismo nombre ";
+			}
+		}
+
+		return response;
+	}
+
+		public String TradicionalSearchIdClub(String id) {
+			String response = " No se encontrado el nombre de la mascota";
+			int p = 0;
+			for(int i = 0;i<club.size();i++) {
+				if(club.get(i).TradicionalSearchIdPet(id).equals(id) ) {
+					response = club.get(i).getIdentification() + "es el id de la mascota" ;
+					p++;
+				}
+				if(p == 1) {
+					response = "Hay una o mas mascotas con el mismo id ";
+				}
+			}
+
+			return response;
+
+		}
+	
+	public String TradicionalSearchLastName(String lastName) {
+		String response = "No se encontrado el apellido del cliente";
+		boolean p = false;
+		for(int i = 0;i<club.size() && p == true;i++) {
+			if(club.get(i).TradicionalSearchLastName(lastName).equals(lastName) ) {
+				response = "el apellido se encontro" ;
+				p = true;
+			}
+		}
+		
+		return response;
+	}
 	
 	
 	
+	public String TradicionalSearchDateBornOwner(String dateBorn) {
+		String response = "No se encontrado el apellido del cliente";
+		boolean p = false;
+		for(int i = 0;i<club.size() && p == true;i++) {
+			if(club.get(i).TradicionalSearchDateBorn(dateBorn).equals(dateBorn) ) {
+				response = "la fecha de nacimiento se encontro" ;
+				p = true;
+			}
+		}
+		
+		return response;
+	}
+	
+	public String TradicionalSearchTypePetOwner(String TypePet) {
+		String response = "No se encontrado el apellido del cliente";
+		boolean p = false;
+		for(int i = 0;i<club.size() && p == true;i++) {
+			if(club.get(i). TradicionalSearchTypePet(TypePet).equals(TypePet) ) {
+				response = "el tipoi de mascota se encontro" ;
+				p = true;
+			}
+		}
+		
+		return response;
+	}
+	
+	//order responsabilities
+	
+	public void OrganizeNameP() {
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).OrganizeName();
+		}
+	}
+	public void OrganizeGender() {
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).OrganizeGender();;
+		}
+	}
+	public void OrganizeIdP() {
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).OrganizeId();;
+		}
+	}
 
+	public void OrganizeTypeP() {
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).OrganizeTypePet();
+		}
+	}
+	public void organizeDateBornP() {
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).OrganizeBornDate();
+		}
+	}
+
+	public void OrganizeOwnerNames() {
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).organizeLastNameOwner();
+		}
+	}
+	public void OrganizeLastName() {
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).organizeLastNameOwner();
+		}
+	}
+	public void OrganizeDateBorn(){
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).organizeDateBornOwner();
+		}
+	}
+	public void OrganizeOwnerID(){
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).organizeIdOwner();
+		}
+	}
+	public void OrganizeTypePet(){
+		for (int i = 0; i < club.size(); i++) {
+			club.get(i).organizeTypePetOwner();
+		}
+	}
+
+	
 
 }
